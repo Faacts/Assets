@@ -1,0 +1,9 @@
+/* Hide only the Activity section header */
+h3.membersGroup_c8ffbb:has(.header__095fe) {
+  display: none !important;
+}
+
+/* Hide activity cards */
+div[class*="members_"] div[class*="container__0f2e8"] {
+  display: none !important;
+}
