@@ -1,0 +1,14 @@
+div[role="button"][aria-label="Apps"],
+div[role="button"][aria-label="Open sticker picker"],
+div[role="button"][aria-label="Send GIF"],
+div[aria-label="Send a gift"] {
+  display: none !important;
+}
+
+div[class*="buttons_"] {
+  gap: 0 !important;
+}
+
+div[class*="buttons_"] span[style="display: none;"] {
+  display: none !important;
+}
