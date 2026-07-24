@@ -1,0 +1,52 @@
+:root {
+  --username-vertical-padding: 0;
+  --username-horizontal-padding: 6px;
+  --username-border-radius: 5px;
+  --username-plugin-suffix: "| @";
+}
+.vc-smyn-suffix {
+  color: currentColor;
+  opacity: 0.5;
+  &::before {
+    content: var(--username-plugin-suffix);
+  }
+  &::after {
+    content: "";
+  }
+}
+.header_c19a55 {
+  margin-bottom: 4px;
+}
+.username_c19a55 {
+  border-radius: var(--username-border-radius);
+  text-decoration: none;
+  background: none;
+}
+/* Non-smyn solid usernames only */
+.username_c19a55:not(.convenienceGlowGradient_e5de78):not(:has(.smyn-name)) {
+  padding: var(--username-vertical-padding) var(--username-horizontal-padding);
+  background: color-mix(in srgb, currentColor 20%, transparent);
+  &:hover {
+    text-decoration: none;
+    background: color-mix(in srgb, currentColor 30%, transparent);
+  }
+}
+/* All SMYN usernames (solid + gradient) outside mentions */
+.smyn-name:not(.mention *) {
+  padding: var(--username-vertical-padding) var(--username-horizontal-padding);
+  border-radius: var(--username-border-radius);
+  box-shadow: inset 0 0 0 100px color-mix(in srgb, currentColor 20%, transparent);
+  &:hover {
+    box-shadow: inset 0 0 0 100px color-mix(in srgb, currentColor 30%, transparent);
+  }
+}
+/* Mention wrapper - override default bg with role color */
+.mention:has(.smyn-name) {
+  padding: 1px 4px;
+  margin: 0 2px;
+  border-radius: var(--username-border-radius) !important;
+  background-color: color-mix(in srgb, currentColor 20%, transparent) !important;
+  &:hover {
+    background-color: color-mix(in srgb, currentColor 30%, transparent) !important;
+  }
+}
