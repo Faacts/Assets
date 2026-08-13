@@ -1,0 +1,48 @@
+/**
+ * @name Better Embeds
+ * @description Nicer looking embeds
+ * @author 0pyr
+ * @version 1
+ * @authorId 277851641976324096
+ * @authorLink https://0pyr.cfd/
+*/
+/*Embed Border Import */
+@import url("https://raw.githubusercontent.com/Faacts/Assets/refs/heads/main/EmbedBorders.css");
+/* Embed Border */
+:root {
+  --wh-border-width: 1px; /* was 4px — this is the frame thickness */
+  --wh-border-radious: 8px;
+  --wh-background-opacity: 0%; /* was 25% — 0% = fully opaque background, no accent bleed-through */
+  --wh-default-background: hsl(
+    from var(--background-surface-high) h s l / 100%
+  );
+  --wh-always-show-suppress-embed-button: 1;
+}
+
+/* Thin gray border instead of the embed's accent color */
+/* .withAccentColor__60fa3's border-color feeds into .embedFull__623de::before
+   via `border: inherit`, so overriding it here recolors the whole frame
+   regardless of what color a given embed sets. */
+.withAccentColor__60fa3 {
+  border-width: var(--wh-border-width) !important; /* was hardcoded 4px */
+  border-color: #1f211f !important; /* grayish, semi-transparent */
+}
+
+/* Classic embeds without the withAccentColor class — Discord sets their
+   border-left-color inline per-embed, and the imported stylesheet forces
+   top/right/bottom to none, so we override the full shorthand to get an
+   even box on all four sides instead of a left-only edge. */
+.embedFull__623de {
+  border: var(--wh-border-width) solid #1f211f !important;
+  background: hsl(from var(--background-surface-high) h s l / 100%) !important; /* flat, no tint */
+}
+
+/* The imported stylesheet also paints a border/background via ::before and
+   ::after pseudo-elements on this same class. That was designed to work
+   without a real border set on the element itself — now that we're setting
+   an actual border+background above, the pseudo layers just duplicate and
+   misalign with it, causing the uneven/gappy edges. Turn them off. */
+.embedFull__623de::before,
+.embedFull__623de::after {
+  display: none !important;
+}
